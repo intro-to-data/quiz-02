@@ -1,0 +1,5 @@
+*.gz
+*.Rproj*
+.Rhistory
+.RData
+.Ruserdata
