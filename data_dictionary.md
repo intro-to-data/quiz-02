@@ -20,6 +20,8 @@ title_basics %>% inner_join(title_principals, by = "tconst")
 
 All tables have been shortened to include movies and shows from the 90s. This means a show or movie was around for at least some part of the greatest decade of them all, the 90s. Otherwise, this data set is just too big.
 
+The primary identifier throughout this data is tconst. And IMDB uses this identifier pervasively. For example, tt0409847 is the tconst for the eponymous 2011 movie Cowboys & Aliens. All records pertaining to this movie can be found by filtering one or more tables to `tconst == "tt0409847"`. They also use this tconst in their uesr interface. The URL for the movie is https://www.imdb.com/title/tt0409847/.
+
 ## Present
 
 ### title_basics

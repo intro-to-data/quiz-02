@@ -1,0 +1,162 @@
+---
+title: "Quiz 2"
+output: html_notebook
+---
+
+# Setup
+
+```{r}
+library(tidyverse)
+
+## Data Import
+title_basics <- read_tsv("data/title_basics.tsv.gz")
+title_genres <- read_tsv("data/title_genres.tsv.gz")
+title_principals <- read_tsv("data/title_principals.tsv.gz")
+title_ratings <- read_tsv("data/title_ratings.tsv.gz")
+```
+
+As with Quiz 01, the format of this quiz is almost identical to a lab. The first few tasks are focused on SINGLE TABLE transformations/analysis. There will also be some relational tasks. Take your time, you have a week to complete this quiz.The raw data goes back to the 19th century, but our data set includes only titles released during the greatest decade of all time, the 1990s. To read more about the data set from IMDB, follow [this link](https://www.imdb.com/interfaces/).
+
+- You may use class notes, past labs, etc. to complete these tasks.
+- You may also use the book/assigned readings to help yourself complete these tasks. I suggest:
+    - **Single Table:** https://r4ds.had.co.nz/transform.html
+    - **Relational:** https://r4ds.had.co.nz/relational-data.html
+- For more details on the data, please see [data_dictionary](./data_dictionary.md) which you can open from the files section of RStudio. I strongly suggest looking through this document because it contains a lot of useful information. 
+
+
+
+# Single Table Transforms
+
+## Task 01
+
+What percentage of titles in the data set are TV Movies? Go out at least one decimal place.
+
+- Complete this task using `title_basics`.
+    - This table has one row per title/tconst which is a unique identifier for each title.
+- The `titleType` column contains options such as:
+    - movie
+    - short
+    - tvEpisode
+    - tvEpisode
+    - etc.
+- Group by `titleType` and get the counts per type. Then calculate the percent.
+    - You can do this in the `summarize()` clause or a separate `mutate()` clause.
+
+```{r}
+## YOUR CODE HERE!
+
+```
+
+## Task 02
+
+Which title genre is the least popular?
+
+- Complete this task using `title_genres`.
+- A single title can belong to more than one genre.
+- For example, the 2011 movie "Cowboys & Aliens", is tagged as belonging to Action, Sci-Fi, Thriller genres.
+- Note, it somehow is not labeled as belonging to the Western genre. How weird.
+- I do not know how they decide which genres each movie goes into, and it may not be consistent.
+- https://www.imdb.com/title/tt0409847/
+
+```{r}
+## YOUR CODE HERE!
+
+```
+
+## Task 03
+
+What is the average rating for movies with 250,000 or fewer votes?
+
+- Complete this task using `title_ratings`.
+- You are going to filter on `numVotes`.
+- And then find the average of the `averageRating` column.
+
+```{r}
+## YOUR CODE HERE!
+
+```
+
+## Task 04
+
+For titles with 250,000 or fewer votes, is there a relationship/correlation between the number of votes and the average rating? Please make sure the code to generate the graph is in your quiz.Rmd file. If you get the wrong answer, I will look at the Rmd file to award partial credit.
+
+- This is similar to Task 03.
+- Before answering this question in Canvas, complete the graph for Task 05 because this may help you decide how to answer.
+- Here, you need to do a similar filtering and then pipe the results to ggplot to plot the distribution of averageRatings to numVotes.
+- You do not need to summarize for this task.
+- You can add the regression with `geom_smooth(method = lm)`.
+- If the slope of the regression is flat (or nearly so), this tells you one thing. If the slope is clearly not flat, this should tell you something else.
+- Your options in Canvas are "Yes" or "No". Select the option which best fits the data you see.
+
+```{r}
+## YOUR CODE HERE!
+
+```
+
+## Task 05
+
+For titles with more than 250,000 is there a relationship/correlation between the number of votes and the average rating? Please make sure the code to generate the graph is in your quiz.Rmd file. If you get the wrong answer, I will look at the Rmd file to award partial credit.
+
+- This is similar to Task 03 and 04.
+- Before answering this question in Canvas, complete the graph for Task 04 because this may help you decide how to answer.
+
+```{r}
+## YOUR CODE HERE!
+
+```
+
+
+
+# Relational Transforms
+
+These tasks are based on joining two tables together.
+
+## Task 06
+
+For titles with 250,000 or fewer votes, which movie genre has the highest average score?
+
+- Complete this task using `title_genres` and `title_ratings`, joined _by_ `tconst`.
+- The data dictionary may be of use as well.
+
+```{r}
+## YOUR CODE HERE!!!
+
+```
+
+
+## Task 07
+
+Of titles shown during the 90s, which start year had the highest rating?
+
+- Complete this task using `title_basics` and `title_ratings`, joined by `tconst`.
+
+```{r}
+## YOUR CODE HERE!!!
+
+```
+
+
+## Task 08
+
+What was the highest rated movie released in 1998?
+
+- Remember, you only want movies, you have to filter the types out.
+- Complete this task using `title_basics` and `title_ratings`, joined by `tconst`.
+
+```{r}
+## YOUR CODE HERE!!!
+
+
+```
+
+## Task 09
+
+How many movie genres is Saving Private Ryan listed in?
+
+- Complete this task using `title_basics` and `title_genres`, joined by `tconst`.
+
+```{r}
+## YOUR CODE HERE!!!!!
+
+```
+

@@ -1,3 +1,6 @@
+*.tsv.gz
+*.Rproj
+*.html
 .Rproj.user
 .Rhistory
 .RData
