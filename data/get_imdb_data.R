@@ -8,11 +8,13 @@ library(tidyverse)
 ## DATA =======================================================================
 
 if (TRUE) {
-  csv_files <- list_files("./data", pattern = "csv", full.name = TRUE)
-  if (length(csv_files) > 0 ) {
+  data_files <- list_files("./data", pattern = "tsv.gz", full.name = TRUE)
+  if (length(data_files) > 0 ) {
     rm(csv_files)
+    message("All saved data deleted.")
   } else {
     message("I don't see any files to delete.")
+    message("I will download the data and save it locally.")
   }
 }
 
